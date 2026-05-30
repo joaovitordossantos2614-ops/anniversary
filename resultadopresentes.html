@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seus Presentes</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Montserrat',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:
+    linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.92)),
+    url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1600&q=80');
+    color:white;
+    padding:40px;
+    
+}
+
+.netflix{
+    color:#E50914;
+    font-size:1rem;
+    font-weight:800;
+    letter-spacing:8px;
+    text-align:center;
+    margin-bottom:20px;
+}
+
+h1{
+    text-align:center;
+    font-size:3rem;
+    margin-bottom:15px;
+}
+
+.subtitle{
+    text-align:center;
+    color:#b3b3b3;
+    margin-bottom:50px;
+}
+
+.presentes{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+    max-width:1200px;
+    margin:auto;
+}
+
+.presente{
+    background:#1f1f1f;
+    border-radius:15px;
+    overflow:hidden;
+    transition:.3s;
+    cursor:pointer;
+}
+
+.presente:hover{
+    transform:scale(1.05);
+}
+
+.presente img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.info{
+    padding:20px;
+}
+
+.tipo{
+    color:#E50914;
+    font-size:.85rem;
+    font-weight:700;
+    margin-bottom:10px;
+}
+
+.nome{
+    font-size:1.4rem;
+    font-weight:700;
+    margin-bottom:10px;
+}
+
+.descricao{
+    color:#ccc;
+    line-height:1.5;
+}
+
+.final{
+    text-align:center;
+    margin-top:60px;
+    color:#d1d1d1;
+    font-size:1.1rem;
+}
+
+/* ========================= */
+/* EFEITO DE TV CINEMATOGRÁFICA */
+/* ========================= */
+
+body{
+    position:relative;
+    overflow-x:hidden;
+}
+
+/* Vinheta nas bordas */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+    radial-gradient(
+        circle,
+        transparent 50%,
+        rgba(0,0,0,.25) 75%,
+        rgba(0,0,0,.65) 100%
+    );
+    pointer-events:none;
+    z-index:999;
+}
+
+/* Linhas de TV */
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+    repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 2px,
+        rgba(255,255,255,.03) 3px
+    );
+    pointer-events:none;
+    z-index:998;
+}
+
+/* Ruído da tela */
+.tv-noise{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:997;
+    opacity:.05;
+    background-image:
+    repeating-radial-gradient(
+        circle at center,
+        white 0px,
+        transparent 1px
+    );
+    animation:noise .15s infinite;
+}
+
+/* Tremulação suave */
+@keyframes noise{
+    0%{transform:translate(0,0);}
+    20%{transform:translate(-1px,1px);}
+    40%{transform:translate(1px,-1px);}
+    60%{transform:translate(-1px,0);}
+    80%{transform:translate(1px,1px);}
+    100%{transform:translate(0,0);}
+}
+
+/* Brilho vermelho Netflix */
+.netflix{
+    text-shadow:
+    0 0 10px rgba(229,9,20,.6),
+    0 0 20px rgba(229,9,20,.4);
+}
+
+/* Efeito nas capas */
+.presente{
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.4);
+}
+
+.presente:hover{
+    transform:scale(1.05);
+    box-shadow:
+    0 15px 40px rgba(229,9,20,.25);
+}
+
+.btn-container{
+    display:flex;
+    justify-content:center;
+    margin-top:40px;
+}
+
+.btn{
+    display:inline-block;
+    text-decoration:none;
+    background:#E50914;
+    color:white;
+    font-weight:700;
+    padding:18px 50px;
+    border-radius:8px;
+    font-size:1.1rem;
+    transition:.3s;
+    box-shadow:0 0 25px rgba(229,9,20,.6);
+}
+
+.btn:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 40px rgba(229,9,20,.9);
+}
+</style>
+</head>
+<body>
+
+<div class="tv-noise"></div>
+
+<div class="netflix">JOÃO VITOR PRESENTS</div>
+
+<h1>Seus Presentes Foram Revelados</h1>
+
+<p class="subtitle">
+Parabéns! Após uma análise extremamente avançada das suas respostas,
+estes foram os presentes escolhidos especialmente para você.
+</p>
+
+<div class="presentes">
+
+    <div class="presente">
+        <img src="imgs/box.jpg">
+        <div class="info">
+            <div class="tipo">PRESENTE #1</div>
+            <div class="nome">Box Crepúsculo Edição Comemorativa de 20 Anos</div>
+            <div class="descricao">
+                Você gosta desses vampiros malucos né?.
+            </div>
+        </div>
+    </div>
+
+    <div class="presente">
+        <img src="imgs/Screenshot_20260529_223157_SHEIN.jpg">
+        <div class="info">
+            <div class="tipo">PRESENTE #2</div>
+            <div class="nome">Moletom</div>
+            <div class="descricao">
+                Tem que se esquentar meu amor.
+            </div>
+        </div>
+    </div>
+
+    <div class="presente">
+        <img src="imgs/Screenshot_20260529_223339_SHEIN.jpg">
+        <div class="info">
+            <div class="tipo">PRESENTE #3</div>
+            <div class="nome">Pijama Inverno</div>
+            <div class="descricao">
+                Já falei pra se esquentar...
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="final">
+    Obrigado por fazer parte da minha vida. Agradeço ao Senhor por se fazer presente mais uma vez na sua vida, concedendo-lhe mais um ano de celebrações, conquistas e, se Deus quiser, muitas outras que ainda virão.
+
+Eu poderia falar e escrever inúmeras coisas que jamais chegariam aos pés do que minha alma transborda e sente ao te ver. O primor de uma beleza surreal, que me faz querer viver e habitar nessa morada; nesse sorriso, nesses olhos, nesse cabelo que me remete a um farol em meio à penumbra.
+
+A data é sua. A data é da mulher que me faz sentir tão vivo. Aproveite, minha nega. Dance a dança da vida, abrace o ar leve, agarre os seus sonhos e viva, acima de tudo, sendo VOCÊ.
+
+Eu te amo de uma forma abismal e radiante, assim como você é. Obrigado por ser o presente que sempre pedi a Deus. Obrigado por amar o amor que sinto. Obrigado por me permitir viver e presenciar o espetáculo maravilhoso que é você.
+
+Feliz aniversário, minha nega. ❤️
+
+</div>
+
+<div class="btn-container">
+    <a href="adjetivos.html" class="btn">
+        EU TE AMO!
+    </a>
+</div>
+
+</body>
+</html>

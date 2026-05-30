@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Descubra Seus Presentes</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Montserrat',sans-serif;
+}
+
+body{
+    height:100vh;
+    background:
+    linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.92)),
+    url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1600&q=80');
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    overflow-x:hidden;
+    overflow-y:auto;
+}
+
+.container{
+    text-align:center;
+    max-width:800px;
+    padding:40px;
+    position:relative;
+}
+
+.container::before{
+    content:"";
+    position:absolute;
+    inset:-50px;
+    background:radial-gradient(
+        circle,
+        transparent 55%,
+        rgba(0,0,0,.4) 100%
+    );
+    pointer-events:none;
+}
+
+/* Ruído da TV */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background-image:
+        repeating-radial-gradient(
+            circle at center,
+            rgba(255,255,255,0.015) 0px,
+            rgba(255,255,255,0.015) 1px,
+            transparent 1px,
+            transparent 4px
+        );
+    pointer-events:none;
+    z-index:999;
+    animation:noise .15s infinite;
+}
+
+/* Linhas da tela */
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0px,
+            transparent 2px,
+            rgba(255,255,255,.03) 3px
+        );
+    pointer-events:none;
+    z-index:998;
+}
+
+/* Tremulação leve */
+@keyframes noise{
+    0%{transform:translate(0,0);}
+    20%{transform:translate(-2px,1px);}
+    40%{transform:translate(2px,-1px);}
+    60%{transform:translate(-1px,2px);}
+    80%{transform:translate(1px,-2px);}
+    100%{transform:translate(0,0);}
+}
+
+.container{
+    text-align:center;
+    max-width:800px;
+    padding:40px;
+}
+
+.netflix{
+    color:#E50914;
+    font-size:1rem;
+    font-weight:700;
+    letter-spacing:8px;
+    margin-bottom:20px;
+}
+
+h1{
+    font-size:4rem;
+    font-weight:800;
+    margin-bottom:20px;
+}
+
+.subtitle{
+    font-size:1.2rem;
+    color:#d1d1d1;
+    margin-bottom:35px;
+    line-height:1.8;
+}
+
+.features{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-bottom:40px;
+}
+
+.feature{
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.1);
+    padding:12px 18px;
+    border-radius:10px;
+}
+
+.btn{
+    display:inline-block;
+    text-decoration:none;
+    background:#E50914;
+    color:white;
+    font-weight:700;
+    padding:18px 50px;
+    border-radius:8px;
+    font-size:1.1rem;
+    transition:.3s;
+    box-shadow:0 0 25px rgba(229,9,20,.6);
+}
+
+.btn:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 40px rgba(229,9,20,.9);
+}
+
+.small{
+    margin-top:20px;
+    color:#999;
+    font-size:.9rem;
+}
+
+.carousel{
+    width:100%;
+    overflow:hidden;
+    margin:40px 0;
+    position:relative;
+}
+
+.carousel::before,
+.carousel::after{
+    content:"";
+    position:absolute;
+    top:0;
+    width:120px;
+    height:100%;
+    z-index:2;
+}
+
+.carousel::before,
+.carousel::after{
+    content:"";
+    position:absolute;
+    top:0;
+    width:180px;
+    height:100%;
+    z-index:10;
+    pointer-events:none;
+}
+
+.carousel::before{
+    left:0;
+    background:linear-gradient(
+        to right,
+        rgba(20,20,20,1) 0%,
+        rgba(20,20,20,.95) 20%,
+        rgba(20,20,20,.7) 50%,
+        rgba(20,20,20,0) 100%
+    );
+}
+
+.carousel::after{
+    right:0;
+    background:linear-gradient(
+        to left,
+        rgba(20,20,20,1) 0%,
+        rgba(20,20,20,.95) 20%,
+        rgba(20,20,20,.7) 50%,
+        rgba(20,20,20,0) 100%
+    );
+}
+
+.carousel-track img{
+    width:240px;
+    height:135px;
+    object-fit:cover;
+    border-radius:8px;
+    transition:.4s;
+    cursor:pointer;
+    filter:brightness(.9);
+}
+
+.carousel-track img:hover{
+    transform:scale(1.08);
+    filter:brightness(1.1);
+}
+
+.carousel{
+    width:100%;
+    overflow:hidden;
+    margin:40px 0;
+    position:relative;
+    mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 15%,
+        black 85%,
+        transparent
+    );
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 15%,
+        black 85%,
+        transparent
+    );
+}
+
+.carousel-track{
+    display:flex;
+    gap:15px;
+    width:max-content;
+    animation:scroll 35s linear infinite;
+}
+
+.carousel-track img{
+    width:240px;
+    height:135px;
+    object-fit:cover;
+    border-radius:px;
+    transition:.3s;
+    cursor:pointer;
+}
+
+.carousel-track img:hover{
+    transform:scale(1.08);
+    z-index:5;
+}
+
+@keyframes scroll{
+    from{
+        transform:translateX(0);
+    }
+    to{
+        transform:translateX(-50%);
+    }
+}
+
+/* ========================= */
+/* RESPONSIVIDADE */
+/* ========================= */
+
+@media (max-width: 768px){
+
+    body{
+        padding:20px;
+        height:auto;
+        min-height:100vh;
+    }
+
+    .container{
+        width:100%;
+        padding:20px;
+    }
+
+    h1{
+        font-size:2.3rem;
+        line-height:1.2;
+    }
+
+    .subtitle{
+        font-size:1rem;
+        line-height:1.6;
+        margin-bottom:25px;
+    }
+
+    .netflix{
+        font-size:.85rem;
+        letter-spacing:4px;
+    }
+
+    .carousel-track img{
+        width:180px;
+        height:100px;
+    }
+
+    .btn{
+        width:100%;
+        max-width:320px;
+        padding:16px;
+        font-size:1rem;
+    }
+
+    .small{
+        font-size:.85rem;
+    }
+}
+
+@media (max-width: 480px){
+
+    h1{
+        font-size:1.8rem;
+    }
+
+    .subtitle{
+        font-size:.95rem;
+    }
+
+    .carousel{
+        margin:25px 0;
+    }
+
+    .carousel-track{
+        gap:10px;
+    }
+
+    .carousel-track img{
+        width:140px;
+        height:80px;
+    }
+
+    .carousel::before,
+    .carousel::after{
+        width:60px;
+    }
+
+    .btn{
+        width:100%;
+        max-width:none;
+    }
+}
+
+.netflix-logo{
+    display:flex;
+    justify-content:center;
+    margin-bottom:25px;
+}
+
+.netflix-logo span{
+    font-size:6rem;
+    font-weight:900;
+    color:#E50914;
+    text-shadow:
+        -3px 0 #b20710,
+        3px 0 #ff4d4d,
+        0 0 25px rgba(229,9,20,.6);
+    transform:skew(-10deg);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <br><br>
+    <div class="netflix-logo">
+    <span>M</span>
+</div>
+
+    <div class="netflix">JOÃO VITOR PRESENTS</div>
+
+    <h1>Descubra Seus Presentes</h1>
+
+    <p class="subtitle">
+        Hoje é seu aniversário meu amor, e que data PRIMOROSA. Hoje celebramos você, seu sorriso, seu coração e tudo aquilo que faz eu me apaixonar cada vez mais.
+    </p>
+
+    <div class="carousel">
+    <div class="carousel-track">
+
+        <img src="imgs/1768791927940.jpg">
+        <img src="imgs/20251208_221536(2).jpg">
+        <img src="imgs/IMG-20251218-WA0096.jpg">
+        <img src="imgs/IMG-20260110-WA0046.jpg">
+        <img src="imgs/IMG-20260117-WA0031.jpg">
+        <img src="imgs/IMG-20260206-WA0073.jpg">
+        <img src="imgs/IMG-20260301-WA0060.jpg">
+        <img src="imgs/IMG-20260304-WA0050.jpg">
+        <img src="imgs/IMG-20260414-WA0029.jpg">
+        <img src="imgs/IMG-20260417-WA0033.jpg">
+
+        <!-- Duplicadas para efeito infinito -->
+        <img src="imgs/1768791927940.jpg">
+        <img src="imgs/20251208_221536(2).jpg">
+        <img src="imgs/IMG-20251218-WA0096.jpg">
+        <img src="imgs/IMG-20260110-WA0046.jpg">
+        <img src="imgs/IMG-20260117-WA0031.jpg">
+        <img src="imgs/IMG-20260206-WA0073.jpg">
+        <img src="imgs/IMG-20260301-WA0060.jpg">
+        <img src="imgs/IMG-20260304-WA0050.jpg">
+        <img src="imgs/IMG-20260414-WA0029.jpg">
+        <img src="imgs/IMG-20260417-WA0033.jpg">
+
+    </div>
+</div>
+
+    <a href="quiz.html" class="btn">
+        ▶ COMEÇAR QUIZ
+    </a>
+
+    <p class="small">
+        Coisa rápida meu amor.
+    </p>
+
+</div>
+
+</body>
+</html>

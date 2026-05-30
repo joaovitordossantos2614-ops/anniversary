@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Você em Palavras</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Montserrat',sans-serif;
+}
+
+body{
+    background:
+    linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.92)),
+    url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1600&q=80');
+    background-size:cover;
+    background-position:center;
+    color:white;
+
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+
+    overflow-x:hidden;
+    overflow-y:auto;
+
+    padding:40px 0;
+}
+
+/* Vinheta */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+    radial-gradient(
+        circle,
+        transparent 45%,
+        rgba(0,0,0,.35) 75%,
+        rgba(0,0,0,.7) 100%
+    );
+    pointer-events:none;
+    z-index:100;
+}
+
+.container{
+    width:100%;
+    text-align:center;
+}
+
+.netflix{
+    color:#E50914;
+    font-weight:800;
+    letter-spacing:8px;
+    margin-bottom:25px;
+    text-shadow:
+    0 0 10px rgba(229,9,20,.7),
+    0 0 25px rgba(229,9,20,.4);
+}
+
+h1{
+    font-size:2rem;
+    margin-bottom:15px;
+}
+
+.subtitle{
+    color:#aaa;
+    margin-bottom:70px;
+    font-size:1rem;
+}
+
+.row{
+    overflow:hidden;
+    margin:20px 0;
+    mask-image:linear-gradient(
+        to right,
+        transparent,
+        black 10%,
+        black 90%,
+        transparent
+    );
+
+    -webkit-mask-image:linear-gradient(
+        to right,
+        transparent,
+        black 10%,
+        black 90%,
+        transparent
+    );
+}
+
+.track{
+    display:flex;
+    gap:18px;
+    width:max-content;
+}
+
+.track span{
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:999px;
+    padding:14px 24px;
+    white-space:nowrap;
+    font-size:1rem;
+    font-weight:600;
+    backdrop-filter:blur(10px);
+}
+
+.row:nth-of-type(1) .track{
+    animation:moveLeft 40s linear infinite;
+}
+
+.row:nth-of-type(2) .track{
+    animation:moveRight 35s linear infinite;
+}
+
+.row:nth-of-type(3) .track{
+    animation:moveLeft 30s linear infinite;
+}
+
+.row:nth-of-type(4) .track{
+    animation:moveRight 45s linear infinite;
+}
+
+@keyframes moveLeft{
+    from{
+        transform:translateX(0);
+    }
+    to{
+        transform:translateX(-50%);
+    }
+}
+
+@keyframes moveRight{
+    from{
+        transform:translateX(-50%);
+    }
+    to{
+        transform:translateX(0);
+    }
+}
+
+/* Linhas de TV */
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+    repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 2px,
+        rgba(255,255,255,.03) 3px
+    );
+    pointer-events:none;
+    z-index:998;
+}
+
+/* Ruído da tela */
+.tv-noise{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:997;
+    opacity:.05;
+    background-image:
+    repeating-radial-gradient(
+        circle at center,
+        white 0px,
+        transparent 1px
+    );
+    animation:noise .15s infinite;
+}
+
+/* Tremulação suave */
+@keyframes noise{
+    0%{transform:translate(0,0);}
+    20%{transform:translate(-1px,1px);}
+    40%{transform:translate(1px,-1px);}
+    60%{transform:translate(-1px,0);}
+    80%{transform:translate(1px,1px);}
+    100%{transform:translate(0,0);}
+}
+
+/* Brilho vermelho Netflix */
+.netflix{
+    text-shadow:
+    0 0 10px rgba(229,9,20,.6),
+    0 0 20px rgba(229,9,20,.4);
+}
+
+/* Efeito nas capas */
+.presente{
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.4);
+}
+
+.presente:hover{
+    transform:scale(1.05);
+    box-shadow:
+    0 15px 40px rgba(229,9,20,.25);
+}
+
+.btn-container{
+    display:flex;
+    justify-content:center;
+    margin-top:40px;
+}
+
+.btn{
+    display:inline-block;
+    text-decoration:none;
+    background:#E50914;
+    color:white;
+    font-weight:700;
+    padding:18px 50px;
+    border-radius:8px;
+    font-size:1.1rem;
+    transition:.3s;
+    box-shadow:0 0 25px rgba(229,9,20,.6);
+}
+
+.btn:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 40px rgba(229,9,20,.9);
+}
+
+.netflix-logo{
+    display:flex;
+    justify-content:center;
+    margin-bottom:25px;
+}
+
+.netflix-logo span{
+    font-size:6rem;
+    font-weight:900;
+    color:#E50914;
+    text-shadow:
+        -3px 0 #b20710,
+        3px 0 #ff4d4d,
+        0 0 25px rgba(229,9,20,.6);
+    transform:skew(-10deg);
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <br><br>
+    <div class="netflix-logo">
+    <span>M</span>
+</div>
+
+<div class="container">
+
+    <h1>Você em Palavras</h1>
+
+    <p class="subtitle">
+        Algumas das infinitas qualidades que<br> 
+        fazem você ser quem é.
+    </p>
+
+    <div class="row">
+        <div class="track">
+            <span>Carinhosa</span>
+            <span>Amorosa</span>
+            <span>Gentil</span>
+            <span>Elegante</span>
+            <span>Encantadora</span>
+            <span>Leal</span>
+            <span>Companheira</span>
+            <span>Linda</span>
+            <span>Carinhosa</span>
+            <span>Amorosa</span>
+            <span>Gentil</span>
+            <span>Elegante</span>
+            <span>Encantadora</span>
+            <span>Leal</span>
+            <span>Companheira</span>
+            <span>Linda</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="track">
+            <span>Esplêndida</span>
+            <span>Majestosa</span>
+            <span>Maravilhosa</span>
+            <span>Incrível</span>
+            <span>Especial</span>
+            <span>Radiante</span>
+            <span>Doce</span>
+            <span>Única</span>
+            <span>Esplêndida</span>
+            <span>Majestosa</span>
+            <span>Maravilhosa</span>
+            <span>Incrível</span>
+            <span>Especial</span>
+            <span>Radiante</span>
+            <span>Doce</span>
+            <span>Única</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="track">
+            <span>Inteligente</span>
+            <span>Engraçada</span>
+            <span>Inspiradora</span>
+            <span>Talentosa</span>
+            <span>Determinda</span>
+            <span>Brilhante</span>
+            <span>Criativa</span>
+            <span>Admirável</span>
+            <span>Inteligente</span>
+            <span>Engraçada</span>
+            <span>Inspiradora</span>
+            <span>Talentosa</span>
+            <span>Determinda</span>
+            <span>Brilhante</span>
+            <span>Criativa</span>
+            <span>Admirável</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="track">
+            <span>Insuperável</span>
+            <span>Abismal</span>
+            <span>Magnífica</span>
+            <span>Extraordinária</span>
+            <span>Perfeita</span>
+            <span>Fantástica</span>
+            <span>Inesquecível</span>
+            <span>Excepcional</span>
+            <span>Insuperável</span>
+            <span>Abismal</span>
+            <span>Magnífica</span>
+            <span>Extraordinária</span>
+            <span>Perfeita</span>
+            <span>Fantástica</span>
+            <span>Inesquecível</span>
+            <span>Excepcional</span>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
